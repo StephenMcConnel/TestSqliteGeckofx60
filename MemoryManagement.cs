@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace TestGeckofx60
+namespace TestSqliteGeckofx60
 {
 	/// <summary>
 	/// This class contains methods useful for logging and warning the user about possible problems

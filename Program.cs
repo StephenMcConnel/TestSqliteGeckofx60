@@ -5,26 +5,34 @@ using System.Windows.Forms;
 using Gecko;
 using System.Drawing;
 
-namespace TestGeckofx60
+namespace TestSqliteGeckofx60
 {
     static public class Program
     {
 		static GeckoWebBrowser _browser;
 		static Label _label;
 		static string _urlFolder;
-		static string _currentPage = "Test0.html";
+		static string _currentPage = "Test1.html";
 		static int _count;
+		static string _folderPath = "D:\\tmp\\Book One";
 
-        [STAThread]
+		[STAThread]
         static public void Main(string[] args)
 		{
 			InitializeGeckofx();
 			_urlFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase), "html");
+			Book book1;
 			using (var form = InitializeControls())
 			{
+				if (Platform.IsLinux)
+					_folderPath = "/tmp/Book One";
+				Directory.CreateDirectory(_folderPath);
+				book1 = new Book { ID = "001", TitleBestForUserDisplay = "Book One", FolderPath = _folderPath };
+				BookHistory.AddEvent(book1, BookHistoryEventType.CheckIn, "TestSqliteGeckofx60 starting");
 				Application.Run(form);
 			}
 			MemoryManagement.CheckMemory("Program finished");
+			BookHistory.AddEvent(book1, BookHistoryEventType.CheckIn, "TestSqliteGeckofx60 finished");
 		}
 
 		private static Form InitializeControls()
@@ -112,28 +120,16 @@ namespace TestGeckofx60
 				GeckoPreferences.User["layers.acceleration.force-enabled"] = true;
 			GeckoPreferences.User["browser.zoom.full"] = true;
 			GeckoPreferences.User["layout.spellcheckDefault"] = 0;
-
-			//// new items being tried
-			//GeckoPreferences.User["browser.cache.disk.enable"] = false;
-			//GeckoPreferences.User["browser.cache.disk.capacity"] = 0;             // 0 disables feature
-			//GeckoPreferences.User["browser.cache.offline.enable"] = false;
-			//GeckoPreferences.User["places.history.enabled"] = false;
 		}
 
 		static void SwitchButtonClicked(object sender, EventArgs e)
 		{
 			switch (_currentPage)
 			{
-				case "Test0.html":  _currentPage = "Test1.html"; break;
 				case "Test1.html": _currentPage = "Test2.html"; break;
-				case "Test2.html": _currentPage = "Test3.html"; break;
-				case "Test3.html": _currentPage = "Test4.html"; break;
-				case "Test4.html": _currentPage = "Test5.html"; break;
-				case "Test5.html": _currentPage = "Test6.html"; break;
-				case "Test6.html": _currentPage = "Test7.html"; break;
-				case "Test7.html": _currentPage = "Test8.html"; break;
-				case "Test8.html": _currentPage = "tictactoe/index.html"; break;
-				case "tictactoe/index.html": _currentPage = "Test0.html"; break;
+				case "Test2.html": _currentPage = "TestA.html"; break;
+				case "TestA.html": _currentPage = "tictactoe/index.html"; break;
+				case "tictactoe/index.html": _currentPage = "Test1.html"; break;
 			}
 			Navigate();
 		}

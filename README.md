@@ -1,11 +1,11 @@
 # Test Geckofx60
 
 This program provides a simple C# program for testing Sqlite when using
-Geckofx60 to display UI in a web browser (eg, Firefox 60).  It logs
-memory use to the console as the user cycles through eleven different html
-files.  It tests the ability to play audio or video through the Geckofx60
-browser window on two pages and the ability to run some simple javascript on
-one page.
+Geckofx60 to display UI in a web browser (eg, Firefox 60).  It logs memory use
+to the console as the user cycles through eleven different html files.  It
+tests the ability to display images on two pages, to play audio or video
+through the Geckofx60 browser window on one page and the ability to run some
+simple javascript on one page.
 
 ## Building
 
@@ -20,8 +20,8 @@ or
 
 ## Testing
 
-The RunTest.sh script provides all the environment needed to run the
-program.  Testing the program is again a simple command line:
+The RunTest.sh script provides all the environment needed to run the program.
+Testing the program is again a simple command line:
 
     ./RunTest.sh  (using system mono)
 or

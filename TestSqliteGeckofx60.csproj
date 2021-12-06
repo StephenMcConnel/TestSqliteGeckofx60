@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{EF110DA5-8086-4A54-9630-6A7CF236B2E7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RestorePackages>true</RestorePackages>
+    <PackagesConfig Condition="'$(OS)'=='Windows_NT'">$(MSBuildProjectDirectory)\Windows\packages.config</PackagesConfig>
+    <PackagesConfig Condition="'$(OS)'!='Windows_NT'">$(MSBuildProjectDirectory)/Linux/packages.config</PackagesConfig>
+    <RootNamespace>TestSqliteGeckofx60</RootNamespace>
+    <AssemblyName>TestSqliteGeckofx60</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)'!='Windows_NT' AND '$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DefineConstants>__MonoCS__;DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)'!='Windows_NT' AND '$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineConstants>__MonoCS__;TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Geckofx-Core" Condition="'$(OS)'!='Windows_NT'">
+      <HintPath>packages\Geckofx60.64.Linux.60.0.51\lib\net40\Geckofx-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Winforms" Condition="'$(OS)'!='Windows_NT'">
+      <HintPath>packages\Geckofx60.64.Linux.60.0.51\lib\net40\Geckofx-Winforms.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Core" Condition="'$(OS)'=='Windows_NT'">
+      <HintPath>packages\Geckofx60.32.60.0.55\lib\net45\Geckofx-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Winforms" Condition="'$(OS)'=='Windows_NT'">
+      <HintPath>packages\Geckofx60.32.60.0.55\lib\net45\Geckofx-Winforms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="MemoryManagement.cs" />
+    <Compile Include="Platform.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ConfigFiles Include="packages\Geckofx60.64.Linux.60.0.51\build\*.config" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(OS)'!='Windows_NT'">
+    <FirefoxFiles Include="packages\Geckofx60.64.Linux.60.0.51\content\Firefox-Linux64\*.*" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(OS)'=='Windows_NT'">
+    <FirefoxFiles Include="packages\Geckofx60.32.60.0.55\content\Firefox\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="html\Test0.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test4.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\100_4334.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test5.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test7.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\DevilsTower.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test6.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test1.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\100_1242.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\big_buck_bunny.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test3.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Lake Pend Oreille.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\100_1250.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test8.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\100_4324.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\PrairieDog.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\Test2.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\asset-manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\robots.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\logo512.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\service-worker.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\precache-manifest.450ca5288c3f47c54231afe746a02e97.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\logo192.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\js\2.9caf0fd4.chunk.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\js\2.9caf0fd4.chunk.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\js\main.a79bed88.chunk.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\js\runtime-main.d52357dd.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\js\main.a79bed88.chunk.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\js\runtime-main.d52357dd.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\css\main.3fa7586b.chunk.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\tictactoe\static\css\main.3fa7586b.chunk.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\recorded-audio.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\recorded-video.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="html\TestA.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Firefox\xul.dll" />
+    <None Include="Firefox\softokn3.dll" />
+    <None Include="Firefox\qipcap.dll" />
+    <None Include="Firefox\plugin-hang-ui.exe" />
+    <None Include="Firefox\plugin-container.exe" />
+    <None Include="Firefox\omni.ja" />
+    <None Include="Firefox\nssdbm3.dll" />
+    <None Include="Firefox\nssckbi.dll" />
+    <None Include="Firefox\nss3.dll" />
+    <None Include="Firefox\mozglue.dll" />
+    <None Include="Firefox\mozavutil.dll" />
+    <None Include="Firefox\mozavcodec.dll" />
+    <None Include="Firefox\libGLESv2.dll" />
+    <None Include="Firefox\libEGL.dll" />
+    <None Include="Firefox\lgpllibs.dll" />
+    <None Include="Firefox\IA2Marshal.dll" />
+    <None Include="Firefox\freebl3.dll" />
+    <None Include="Firefox\d3dcompiler_47.dll" />
+    <None Include="Firefox\breakpadinjector.dll" />
+    <None Include="Firefox\AccessibleMarshal.dll" />
+    <None Include="Firefox\AccessibleHandler.dll" />
+    <None Include="Firefox-Linux64\plugin-container" />
+    <None Include="Firefox-Linux64\platform.ini" />
+    <None Include="Firefox-Linux64\omni.ja" />
+    <None Include="Firefox-Linux64\libxul.so" />
+    <None Include="Firefox-Linux64\libssl3.so" />
+    <None Include="Firefox-Linux64\libsoftokn3.so" />
+    <None Include="Firefox-Linux64\libsmime3.so" />
+    <None Include="Firefox-Linux64\libplds4.so" />
+    <None Include="Firefox-Linux64\libplc4.so" />
+    <None Include="Firefox-Linux64\libnssutil3.so" />
+    <None Include="Firefox-Linux64\libnssdbm3.so" />
+    <None Include="Firefox-Linux64\libnssckbi.so" />
+    <None Include="Firefox-Linux64\libnss3.so" />
+    <None Include="Firefox-Linux64\libnspr4.so" />
+    <None Include="Firefox-Linux64\libmozsqlite3.so" />
+    <None Include="Firefox-Linux64\libmozsandbox.so" />
+    <None Include="Firefox-Linux64\libmozgtk.so" />
+    <None Include="Firefox-Linux64\libmozavutil.so" />
+    <None Include="Firefox-Linux64\libmozavcodec.so" />
+    <None Include="Firefox-Linux64\liblgpllibs.so" />
+    <None Include="Firefox-Linux64\libgtk-x11-2.0.so.0" />
+    <None Include="Firefox-Linux64\libgeckofix.so" />
+    <None Include="Firefox-Linux64\libgdk-x11-2.0.so.0" />
+    <None Include="Firefox-Linux64\libfreeblpriv3.so" />
+    <None Include="Windows\packages.config" />
+    <None Include="Linux\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Linux\" />
+  </ItemGroup>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="@(ConfigFiles)" DestinationFolder="$(OutDir)" />
+    <MakeDir Directories="$(OutDir)Firefox" />
+    <Copy SourceFiles="@(FirefoxFiles)" DestinationFolder="$(OutDir)Firefox" />
+  </Target>
+  <Import Project="packages\Geckofx60.32.60.0.55\build\Geckofx60.32.targets" Condition="Exists('packages\Geckofx60.32.60.0.55\build\Geckofx60.32.targets')" />
+  <Import Project="packages\Geckofx60.64.Linux.60.0.51\build\Geckofx60.64.Linux.targets" Condition="Exists('packages\Geckofx60.64.Linux.60.0.51\build\Geckofx60.64.Linux.targets')" />
+</Project>
